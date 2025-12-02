@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Orbitron:wght@400;700&family=Rajdhani:wght@500;700&display=swap');
+
+:root {
+    --bg-dark: #050510;
+    --neon-blue: #00f3ff;
+    --neon-red: #ff003c;
+    --neon-green: #39ff14;
+    --neon-gold: #ffd700;
+    --text-main: #ffffff;
+    --glass-bg: rgba(20, 20, 35, 0.95);
+    --border: 1px solid rgba(255, 255, 255, 0.1);
+    --radius: 15px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+body {
+    background-color: var(--bg-dark);
+    background-image: repeating-linear-gradient(0deg, transparent, transparent 1px, #111 1px, #111 2px);
+    color: var(--text-main); font-family: 'Rajdhani', sans-serif;
+    min-height: 100vh; overflow-x: hidden;
+}
+
+/* Particles */
+.particles { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
+.particle { position: absolute; background: var(--neon-red); width: 2px; height: 2px; opacity: 0.3; animation: float 10s infinite; }
+@keyframes float { 0% { transform: translateY(100vh); } 100% { transform: translateY(-100vh); } }
+
+/* Glitch Effect */
+.glitch-wrapper { display: flex; justify-content: center; align-items: center; }
+.glitch { font-size: 3rem; font-weight: bold; font-family: 'Orbitron', sans-serif; position: relative; color: var(--text-main); letter-spacing: 5px; }
+.glitch::before, .glitch::after { content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.glitch::before { left: 2px; text-shadow: -1px 0 var(--neon-red); clip: rect(44px, 450px, 56px, 0); animation: glitch-anim-1 5s infinite linear alternate-reverse; }
+.glitch::after { left: -2px; text-shadow: -1px 0 var(--neon-blue); clip: rect(44px, 450px, 56px, 0); animation: glitch-anim-2 5s infinite linear alternate-reverse; }
+@keyframes glitch-anim-1 { 0% { clip: rect(30px, 9999px, 10px, 0); } 20% { clip: rect(80px, 9999px, 90px, 0); } 40% { clip: rect(10px, 9999px, 50px, 0); } 60% { clip: rect(60px, 9999px, 20px, 0); } 80% { clip: rect(40px, 9999px, 70px, 0); } 100% { clip: rect(90px, 9999px, 30px, 0); } }
+@keyframes glitch-anim-2 { 0% { clip: rect(10px, 9999px, 80px, 0); } 20% { clip: rect(70px, 9999px, 10px, 0); } 40% { clip: rect(30px, 9999px, 90px, 0); } 60% { clip: rect(50px, 9999px, 30px, 0); } 80% { clip: rect(90px, 9999px, 40px, 0); } 100% { clip: rect(20px, 9999px, 60px, 0); } }
+
+/* Layout */
+.container { max-width: 600px; margin: 0 auto; padding: 20px; display: flex; flex-direction: column; min-height: 100vh; }
+.logo h1 { font-family: 'Orbitron', sans-serif; font-size: 3rem; text-align: center; color: var(--neon-red); text-shadow: 0 0 15px var(--neon-red); margin-bottom: 5px; }
+.logo p { text-align: center; color: #888; font-size: 0.9rem; letter-spacing: 3px; text-transform: uppercase; }
+
+.section { 
+    background: var(--glass-bg); border: var(--border); border-radius: var(--radius); 
+    padding: 25px; margin-bottom: 20px; display: none; backdrop-filter: blur(10px);
+    box-shadow: 0 0 40px rgba(0,0,0,0.7);
+}
+.section.active { display: block; animation: fadeIn 0.5s ease; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* Centered Sections */
+#setupSection ~ #logoArea { display: none; }
+#roleSection.active, #actionSection.active, #resultSection.active, #gameOverSection.active {
+    display: flex; flex-direction: column; align-items: center; text-align: center; justify-content: center;
+}
+
+/* Role Card */
+.role-card { width: 280px; height: 380px; perspective: 1000px; margin: 30px 0; cursor: pointer; }
+.role-card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.8s; transform-style: preserve-3d; }
+.role-card.flipped .role-card-inner { transform: rotateY(180deg); }
+.role-card-front, .role-card-back { position: absolute; inset: 0; backface-visibility: hidden; border-radius: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; border: 1px solid rgba(255,255,255,0.1); background: #111; padding: 20px; }
+.role-card-back { transform: rotateY(180deg); }
+.role-icon { font-size: 4rem; margin-bottom: 20px; filter: drop-shadow(0 0 10px var(--neon-blue)); color: var(--neon-blue); }
+.traitor-role .role-icon, .traitor-role .role-title { color: var(--neon-red); filter: drop-shadow(0 0 10px var(--neon-red)); }
+.role-title { font-size: 2rem; font-family: 'Cinzel', serif; font-weight: bold; margin-bottom: 15px; color: var(--neon-blue); }
+.role-desc { font-size: 1rem; color: #ccc; line-height: 1.4; }
+.traitor-list { margin-top: 20px; color: var(--neon-red); font-weight: bold; font-size: 1.1rem; }
+
+/* Planning Phase */
+.mission-status-bar { display: flex; gap: 10px; justify-content: center; margin-bottom: 25px; }
+.status-dot { width: 30px; height: 30px; border-radius: 50%; border: 2px solid #444; background: #222; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: bold; color: #888; }
+.status-dot.active { border-color: var(--neon-gold); color: var(--neon-gold); box-shadow: 0 0 10px var(--neon-gold); }
+.status-dot.success { background: var(--neon-blue); border-color: var(--neon-blue); color: black; box-shadow: 0 0 15px var(--neon-blue); }
+.status-dot.fail { background: var(--neon-red); border-color: var(--neon-red); color: white; box-shadow: 0 0 15px var(--neon-red); }
+
+.leader-title { font-size: 1.2rem; color: #aaa; margin-bottom: 5px; }
+.highlight-blue { color: var(--neon-blue); font-size: 1.5rem; font-weight: bold; }
+.highlight-gold { color: var(--neon-gold); font-weight: bold; }
+.mission-info { font-size: 1.1rem; margin-bottom: 20px; }
+
+.team-selection-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; width: 100%; margin-bottom: 25px; }
+.select-card { background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; cursor: pointer; border: 1px solid transparent; text-align: center; transition: 0.2s; }
+.select-card.selected { border-color: var(--neon-green); background: rgba(57, 255, 20, 0.1); box-shadow: 0 0 10px rgba(57, 255, 20, 0.2); }
+
+/* Action Phase */
+.pass-icon { font-size: 4rem; color: var(--text-main); margin-bottom: 20px; animation: pulse 2s infinite; }
+.highlight-name { font-size: 2.5rem; color: var(--neon-gold); font-family: 'Cinzel', serif; margin-bottom: 30px; }
+.role-reminder { color: #888; margin-bottom: 20px; font-style: italic; }
+
+.btn-success { border-color: var(--neon-blue); color: var(--neon-blue); width: 100%; margin-bottom: 15px; height: 60px; font-size: 1.2rem; }
+.btn-success:hover { background: var(--neon-blue); color: black; box-shadow: 0 0 20px var(--neon-blue); }
+.btn-fail { border-color: var(--neon-red); color: var(--neon-red); width: 100%; margin-bottom: 15px; height: 60px; font-size: 1.2rem; }
+.btn-fail:hover { background: var(--neon-red); color: white; box-shadow: 0 0 20px var(--neon-red); }
+
+/* Results */
+.result-title { font-size: 2.5rem; font-family: 'Orbitron', sans-serif; margin-bottom: 30px; text-shadow: 0 0 20px currentColor; }
+.res-success { color: var(--neon-blue); }
+.res-fail { color: var(--neon-red); }
+
+.mission-cards-reveal { display: flex; gap: 10px; justify-content: center; margin-bottom: 30px; flex-wrap: wrap; }
+.reveal-card { width: 60px; height: 80px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 2rem; animation: flipIn 0.5s ease backwards; }
+.card-success { background: var(--neon-blue); color: black; box-shadow: 0 0 15px var(--neon-blue); }
+.card-fail { background: var(--neon-red); color: white; box-shadow: 0 0 15px var(--neon-red); }
+@keyframes flipIn { from { transform: rotateY(90deg); opacity: 0; } to { transform: rotateY(0); opacity: 1; } }
+
+.mission-log { font-size: 1.3rem; margin-bottom: 30px; line-height: 1.5; }
+
+/* Game Over */
+.winner-trophy { font-size: 5rem; margin-bottom: 20px; }
+.traitors-reveal-list { margin-bottom: 30px; }
+.traitors-reveal-list h3 { color: var(--neon-red); margin-bottom: 10px; }
+.t-name { font-size: 1.5rem; font-weight: bold; color: white; }
+
+/* Global */
+.btn { width: 100%; padding: 15px; background: transparent; border: 2px solid var(--neon-gold); color: white; font-family: 'Orbitron', sans-serif; font-size: 1.1rem; border-radius: 50px; cursor: pointer; transition: 0.3s; display: inline-flex; justify-content: center; align-items: center; gap: 10px; text-transform: uppercase; }
+.btn:hover { background: var(--neon-gold); box-shadow: 0 0 20px var(--neon-gold); color: black; }
+.btn-secondary { border-color: #666; color: #ccc; }
+.btn-gold { border-color: var(--neon-gold); color: var(--neon-gold); }
+
+input, select { width: 100%; padding: 15px; background: rgba(0,0,0,0.5); border: 1px solid #444; border-radius: 10px; color: white; font-size: 1.1rem; text-align: center; }
+.input-with-button { display: flex; gap: 10px; margin-bottom: 20px; }
+.player-list { width: 100%; max-height: 300px; overflow-y: auto; margin-bottom: 20px; }
+.player-item { display: flex; justify-content: space-between; padding: 12px; background: rgba(255,255,255,0.05); margin-bottom: 8px; border-radius: 10px; border-left: 3px solid var(--neon-red); }
+
+#loadingScreen, #readyScreen { position: fixed; inset: 0; background: var(--bg-dark); z-index: 999; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+.ready-content { width: 90%; max-width: 500px; padding: 30px; background: var(--glass-bg); border-radius: 20px; border: 1px solid var(--neon-red); }
+.im-ready { margin-top: 30px; }
+@keyframes pulse { 0% { opacity: 0.6; } 50% { opacity: 1; } 100% { opacity: 0.6; } }
+
+@media (max-width: 600px) {
+    .logo h1 { font-size: 2.5rem; }
+    .highlight-name { font-size: 2rem; }
+}
