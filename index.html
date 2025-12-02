@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <title>Protocol: Traitor</title>
+    
+    <link rel="icon" type="image/png" href="data:image/png;base64,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">
+    <link rel="apple-touch-icon" href="data:image/png;base64,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">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div id="loadingScreen">
+        <div class="glitch-wrapper">
+            <div class="glitch" data-text="PROTOCOL">PROTOCOL</div>
+        </div>
+        <div class="loading-text">კავშირის დამყარება...</div>
+    </div>
+
+    <div id="readyScreen" style="display:none;">
+        <div class="ready-content">
+            <div class="logo">
+                <h1>TRAITOR</h1>
+                <p>Trust No One</p>
+            </div>
+            <p>აგენტებმა უნდა შეასრულონ მისიები. მოღალატეებმა ჩუმად უნდა ჩააგდონ ისინი. ენდე, მაგრამ შეამოწმე.</p>
+            <button class="btn im-ready" onclick="showMainPage()">
+                <i class="fas fa-user-secret"></i> დაწყება
+            </button>
+        </div>
+    </div>
+
+    <div class="particles" id="particles"></div>
+
+    <div class="container" id="mainContent" style="display:none;">
+        <div class="logo-area" id="logoArea">
+            <div class="logo"><h1>TRAITOR</h1></div>
+        </div>
+
+        <div id="setupSection" class="section">
+            <div class="input-with-button">
+                <input type="text" id="playerName" placeholder="მოთამაშის სახელი" />
+                <button class="btn" onclick="addPlayer()">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+            <div class="player-list" id="playerList"></div>
+            
+            <div class="config-mini">
+                <label>მოღალატეების რაოდენობა:</label>
+                <select id="traitorCount">
+                    <option value="1">1 მოღალატე</option>
+                    <option value="2">2 მოღალატე (7+ მოთამაშეზე)</option>
+                    <option value="3">3 მოღალატე (10+ მოთამაშეზე)</option>
+                </select>
+            </div>
+
+            <button class="btn" onclick="startGame()" style="margin-top:20px;">
+                <i class="fas fa-play"></i> თამაშის დაწყება
+            </button>
+        </div>
+
+        <div id="roleSection" class="section">
+            <div class="player-turn" id="rolePlayerName">...</div>
+            
+            <div class="role-card" id="roleCard" onclick="revealRole()">
+                <div class="role-card-inner">
+                    <div class="role-card-front" id="roleCardFront">
+                        <div class="role-icon"><i class="fas fa-fingerprint"></i></div>
+                        <div class="role-text" style="font-size:1rem; margin-top:10px">დააჭირე ვინაობის სანახავად</div>
+                    </div>
+                    <div class="role-card-back" id="roleCardBack"></div>
+                </div>
+            </div>
+            
+            <button class="btn next-player-btn" id="nextRoleBtn" onclick="nextRole()" style="display:none; margin-top:20px;">
+                <i class="fas fa-check"></i> გასაგებია
+            </button>
+        </div>
+
+        <div id="planningSection" class="section">
+            <div class="turn-header">
+                რაუნდი <span id="roundNum">1</span> / 5
+            </div>
+            
+            <div class="mission-status-bar" id="missionStatusBar"></div>
+            
+            <h2 class="leader-title">ლიდერი: <span id="leaderName" class="highlight-blue">...</span></h2>
+            <p class="mission-info">ამ მისიისთვის საჭიროა <span id="teamSize" class="highlight-gold">0</span> აგენტი.</p>
+            <p class="mission-sub">აირჩიე გუნდი:</p>
+
+            <div class="team-selection-grid" id="teamSelectionGrid">
+                </div>
+
+            <button class="btn" id="startMissionBtn" onclick="startMission()" disabled>
+                <i class="fas fa-rocket"></i> მისიის დაწყება
+            </button>
+        </div>
+
+        <div id="actionSection" class="section">
+            <div class="turn-header">მისია</div>
+            
+            <div id="passPhoneDisplay">
+                <i class="fas fa-mobile-alt pass-icon"></i>
+                <p>გადაეცი ტელეფონი:</p>
+                <h2 class="highlight-name" id="actionPlayerName">...</h2>
+                <button class="btn btn-gold" onclick="showActionButtons()">
+                    <i class="fas fa-eye"></i> მე ვარ
+                </button>
+            </div>
+
+            <div id="actionControls" style="display:none;">
+                <p class="role-reminder" id="roleReminderText">...</p>
+                
+                <button class="btn btn-success" onclick="submitMissionAction('success')">
+                    <i class="fas fa-check-circle"></i> შესრულება
+                </button>
+                
+                <button class="btn btn-fail" id="sabotageBtn" onclick="submitMissionAction('fail')">
+                    <i class="fas fa-radiation"></i> საბოტაჟი
+                </button>
+            </div>
+        </div>
+
+        <div id="resultSection" class="section">
+            <div class="result-title" id="missionResultTitle">...</div>
+            
+            <div class="mission-cards-reveal" id="missionCardsReveal">
+                </div>
+
+            <div class="mission-log" id="missionLogText">...</div>
+
+            <button class="btn" onclick="nextRound()">
+                <i class="fas fa-forward"></i> შემდეგი რაუნდი
+            </button>
+        </div>
+
+        <div id="gameOverSection" class="section">
+            <div class="result-title" id="finalResultTitle">...</div>
+            <div class="winner-trophy" id="finalTrophy"><i class="fas fa-crown"></i></div>
+            
+            <div class="traitors-reveal-list">
+                <h3>მოღალატეები იყვნენ:</h3>
+                <div id="traitorsList"></div>
+            </div>
+
+            <div class="controls result-buttons">
+                <button class="btn btn-secondary" onclick="restartGame()">
+                    <i class="fas fa-redo"></i> ახალი თამაში
+                </button>
+                <button class="btn" onclick="showMainPage()">
+                    <i class="fas fa-home"></i> მთავარი
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
+        }
+    </script>
+</body>
+</html>
